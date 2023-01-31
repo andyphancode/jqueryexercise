@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="title">Title:</label>
+    <input id="title" type="text" name="title" placeholder="Title...">
+    <label for="rating">Rating:</label>
+    <input id="rating" list="numbers" name="rating" placeholder="Rating" min="0" max="10">
+    <datalist id="numbers">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+        <option value="6"></option>
+        <option value="7"></option>
+        <option value="8"></option>
+        <option value="9"></option>
+        <option value="10"></option>
+    </datalist>
+    <button id="add">Submit</button>
+    <div>
+        <ul>
+
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $('#add').on('click', function(){
+            if($('#rating').val() !== undefined && $('#rating').val() >= 1 && $('#rating').val() <= 10
+                && $('#title').val().length >= 2) {
+                $('ul').append(`<li>${$('#title').val()} ${$('#rating').val()} <button id="remove">X</button></li>`);
+            } else {
+                alert("please put a rating 1-10 or valid title");
+            }
+        });
+
+        $('ul').on('click', "#remove", function(){
+            $(this).parent().remove();
+        });
+    </script>
+</body>
+</html>

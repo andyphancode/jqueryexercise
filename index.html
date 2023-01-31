@@ -57,7 +57,7 @@
       </ol>
     </aside>
   </div>
-  <div class="row mb-5">
+  <div class="row mb-5" id="rgbvals">
     <div class="col-sm-4">
       Red
       <input class="form-control" type="number" min="0" max="255" value="255">
@@ -74,7 +74,26 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
-  // Add your code here!
+  $(document).ready(function()  {
+    console.log("Let's get ready to party with jQuery!");
+    $('img').addClass('image-center');
+  });
+  $('p:last-child').remove();
+  const random = Math.floor(Math.random() * 100);
+  $('h1').attr('style',`font-size: ${random}px`);
+  $('ol').append('<li>HI</li>');
+  $('aside').empty().append('<p>sorry for the list</p>');
+
+  $('.form-control').on('keyup', function() {
+    let red = $('.form-control').eq(0).val();
+    let blue = $('.form-control').eq(1).val();
+    let green = $('.form-control').eq(2).val();
+    $('body').attr('style',`background-color: rgb(${red},${blue},${green})`);
+  })
+
+  $('img').on('click', function(){
+    $(this).remove();
+  })
 </script>
 </body>
 
